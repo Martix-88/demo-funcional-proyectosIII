@@ -24,6 +24,7 @@ export default function HeaderMenu({ isOpen, onToggle, onSectionChange, onLogout
         { id: 'amigos', label: 'Amigos', icon: 'A' },
         { id: 'planes', label: 'Planes', icon: 'P' },
         { id: 'sonidos', label: 'Sonidos', icon: 'M' },
+        { id: 'recompensas', label: 'Recompensas', icon: '🎁' },
         { id: 'logout', label: 'Cerrar Sesión', icon: '🚪' },
     ];
 

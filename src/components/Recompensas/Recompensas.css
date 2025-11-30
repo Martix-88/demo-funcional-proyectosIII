@@ -1,0 +1,361 @@
+/* Recompensas Section */
+.recompensas-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+.recompensas-container h2 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #22c55e;
+    letter-spacing: 1px;
+}
+
+.recompensas-container p {
+    margin: 0;
+    color: #9ca3af;
+    font-size: 1rem;
+}
+
+/* Contenedor del árbol */
+.reward-tree-container {
+    display: flex;
+    gap: 3rem;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Árbol */
+.reward-tree {
+    position: relative;
+    width: 250px;
+    height: 600px;
+    background: linear-gradient(180deg, rgba(34, 197, 94, 0.05) 0%, rgba(34, 197, 94, 0.02) 100%);
+    border-radius: 20px;
+    border: 2px solid rgba(34, 197, 94, 0.3);
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Tronco del árbol */
+.tree-trunk {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 100px;
+    background: linear-gradient(90deg, #8b5a2b, #a0652f);
+    border-radius: 15px;
+    box-shadow: inset -2px 0 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Ramas */
+.tree-branches {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.tree-branch {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 40px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.tree-branch.unlocked {
+    opacity: 1;
+}
+
+/* Línea de rama */
+.branch-line {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 3px;
+    background: rgba(34, 197, 94, 0.3);
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 2px;
+}
+
+.tree-branch.unlocked .branch-line {
+    background: #22c55e;
+}
+
+/* Regalo */
+.reward-gift {
+    position: absolute;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(34, 197, 94, 0.1);
+    padding: 0.5rem 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    transition: all 0.3s ease;
+}
+
+.tree-branch.unlocked .reward-gift {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.3), rgba(34, 197, 94, 0.1));
+    border-color: #22c55e;
+    box-shadow: 0 0 12px rgba(34, 197, 94, 0.3);
+}
+
+.gift-emoji {
+    font-size: 1.5rem;
+    display: block;
+}
+
+.reward-label {
+    font-size: 0.7rem;
+    color: #567dd2;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.tree-branch.unlocked .reward-label {
+    color: #22c55e;
+}
+
+/* Muñequito escalando */
+.climber {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    animation: climb 0.5s ease;
+    z-index: 10;
+}
+
+@keyframes climb {
+    0% {
+        transform: translateX(-50%) scale(0.8);
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
+.climber-emoji {
+    display: block;
+    line-height: 1;
+}
+
+/* Info cards */
+.reward-info {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.info-card {
+    background: rgba(34, 197, 94, 0.1);
+    border: 1px solid #22c55e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    min-width: 150px;
+}
+
+.info-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 0.9rem;
+    color: #567dd2;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.info-value {
+    margin: 0;
+    font-size: 2rem;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+.info-hint {
+    margin: 0.5rem 0 0 0;
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+/* Mensaje motivacional */
+.motivation-message {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.2), rgba(86, 125, 210, 0.1));
+    border: 2px solid #22c55e;
+    border-radius: 12px;
+    padding: 1.5rem;
+    max-width: 500px;
+    margin-top: 1rem;
+}
+
+.motivation-message p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .reward-tree-container {
+        gap: 2rem;
+    }
+
+    .reward-tree {
+        width: 220px;
+        height: 550px;
+    }
+
+    .reward-info {
+        gap: 1rem;
+    }
+
+    .info-card {
+        min-width: 130px;
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .recompensas-container h2 {
+        font-size: 1.5rem;
+    }
+
+    .reward-tree-container {
+        gap: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .reward-tree {
+        width: 200px;
+        height: 500px;
+    }
+
+    .tree-branch {
+        height: 35px;
+    }
+
+    .reward-gift {
+        padding: 0.4rem 0.6rem;
+    }
+
+    .gift-emoji {
+        font-size: 1.3rem;
+    }
+
+    .climber {
+        font-size: 1.8rem;
+    }
+
+    .info-card {
+        min-width: 110px;
+        padding: 0.9rem;
+    }
+
+    .info-value {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reward-tree-container {
+        gap: 1rem;
+    }
+
+    .reward-tree {
+        width: 180px;
+        height: 450px;
+        padding: 1.5rem;
+    }
+
+    .tree-branch {
+        height: 32px;
+    }
+
+    .reward-gift {
+        padding: 0.35rem 0.5rem;
+    }
+
+    .gift-emoji {
+        font-size: 1.1rem;
+    }
+
+    .reward-label {
+        font-size: 0.65rem;
+    }
+
+    .climber {
+        font-size: 1.5rem;
+    }
+
+    .reward-info {
+        gap: 0.8rem;
+    }
+
+    .info-card {
+        min-width: 95px;
+        padding: 0.7rem;
+    }
+
+    .info-card h3 {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
+    }
+
+    .info-value {
+        font-size: 1.5rem;
+    }
+
+    .info-hint {
+        font-size: 0.7rem;
+    }
+
+    .motivation-message {
+        padding: 1rem;
+    }
+
+    .motivation-message p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 360px) {
+    .reward-tree {
+        width: 160px;
+        height: 400px;
+        padding: 1rem;
+    }
+
+    .info-card {
+        min-width: 80px;
+        padding: 0.6rem;
+    }
+
+    .info-card h3 {
+        font-size: 0.75rem;
+    }
+
+    .info-value {
+        font-size: 1.3rem;
+    }
+}

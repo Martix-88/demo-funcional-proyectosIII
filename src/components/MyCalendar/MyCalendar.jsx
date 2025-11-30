@@ -9,6 +9,7 @@ import HeaderMenu from '../HeaderMenu/HeaderMenu';
 import Amigos from '../Amigos/Amigos';
 import Planes from '../Planes/Planes';
 import Sonidos from '../Sonidos/Sonidos';
+import Recompensas from '../Recompensas/Recompensas';
 import { useLocalStorage } from '../../hooks/useLocalStorage';
 
 import '@fullcalendar/common/main.css';
@@ -209,8 +210,14 @@ export default function MyCalendar({ onLogout, onLogoClick }) {
     }, [setDailyTasks, updateCurrentStreak]);
 
     const handleLogoClick = () => {
-        if (onLogoClick) {
-            onLogoClick();
+        if (activeSection === 'calendar') {
+            // Si estamos en el calendario, ir al home
+            if (onLogoClick) {
+                onLogoClick();
+            }
+        } else {
+            // Si estamos en otro apartado, volver al calendario
+            setActiveSection('calendar');
         }
     };
 
@@ -327,6 +334,7 @@ export default function MyCalendar({ onLogout, onLogoClick }) {
                 {activeSection === 'amigos' && <Amigos />}
                 {activeSection === 'planes' && <Planes />}
                 {activeSection === 'sonidos' && <Sonidos />}
+                {activeSection === 'recompensas' && <Recompensas currentStreak={currentStreak} />}
             </div>
         </div>
     );
