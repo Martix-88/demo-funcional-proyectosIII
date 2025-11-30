@@ -1,0 +1,516 @@
+/* Colores principales */
+:root {
+    --primary-black: #000000;
+    --primary-green: #22c55e;
+    --dark-green: #16a34a;
+    --light-green: #4ade80;
+    --gray-dark: #1f2937;
+    --gray-light: #f3f4f6;
+    --text-light: #ffffff;
+}
+
+/* Contenedor principal */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--primary-black) 0%, var(--gray-dark) 100%);
+    color: var(--text-light);
+}
+
+/* Header */
+.home-header {
+    background-color: var(--primary-black);
+    border-bottom: 3px solid var(--primary-green);
+    padding: 1rem 2rem;
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.app-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary-green);
+    margin: 0;
+    letter-spacing: 2px;
+}
+
+/* Botón de Login */
+.login-button {
+    background: linear-gradient(135deg, var(--primary-green), var(--dark-green));
+    color: var(--primary-black);
+    border: 2px solid var(--primary-green);
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+    white-space: nowrap;
+}
+
+.login-button:hover {
+    background: linear-gradient(135deg, var(--light-green), var(--primary-green));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.5);
+}
+
+.login-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(34, 197, 94, 0.3);
+}
+
+/* Main content */
+.home-main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Sección del logo */
+.logo-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    height: 280px;
+    background: linear-gradient(135deg, var(--gray-dark), rgba(34, 197, 94, 0.1));
+    border: 3px solid var(--primary-green);
+    border-radius: 20px;
+    padding: 1rem;
+    box-shadow: 0 8px 32px rgba(34, 197, 94, 0.2);
+    transition: all 0.3s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 48px rgba(34, 197, 94, 0.3);
+    border-color: var(--light-green);
+}
+
+.main-logo {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+}
+
+/* Sección de descripción */
+.description-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 1rem 0;
+    color: var(--primary-green);
+    letter-spacing: 1px;
+}
+
+.main-description {
+    font-size: 1.1rem;
+    color: var(--gray-light);
+    line-height: 1.8;
+    margin: 0 0 2rem 0;
+    font-weight: 300;
+}
+
+/* Botón de "Saber Más" */
+.learn-more-button {
+    background-color: transparent;
+    color: var(--primary-green);
+    border: 2px solid var(--primary-green);
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.2);
+}
+
+.learn-more-button:hover {
+    background-color: var(--primary-green);
+    color: var(--primary-black);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.4);
+}
+
+.learn-more-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(34, 197, 94, 0.2);
+}
+
+/* Footer */
+.home-footer {
+    background-color: var(--primary-black);
+    border-top: 2px solid var(--primary-green);
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--gray-light);
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+.home-footer p {
+    margin: 0;
+}
+
+/* Responsive - Desktop Grande */
+@media (max-width: 1920px) {
+    .home-main {
+        padding: 3rem 2rem;
+    }
+
+    .logo-container {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+/* Responsive - Desktop */
+@media (max-width: 1440px) {
+    .home-main {
+        padding: 2.8rem 2rem;
+    }
+
+    .app-title {
+        font-size: 1.7rem;
+    }
+
+    .main-title {
+        font-size: 2.3rem;
+    }
+
+    .logo-container {
+        width: 260px;
+        height: 260px;
+    }
+}
+
+/* Responsive - Tablets Grandes */
+@media (max-width: 1024px) {
+    .home-header {
+        padding: 0.9rem 1.5rem;
+    }
+
+    .header-content {
+        gap: 1rem;
+    }
+
+    .app-title {
+        font-size: 1.5rem;
+        letter-spacing: 1.5px;
+    }
+
+    .login-button {
+        padding: 0.7rem 1.4rem;
+        font-size: 0.95rem;
+    }
+
+    .home-main {
+        padding: 2.5rem 1.5rem;
+        gap: 2.5rem;
+    }
+
+    .main-title {
+        font-size: 2rem;
+    }
+
+    .main-description {
+        font-size: 1.05rem;
+    }
+
+    .logo-container {
+        width: 240px;
+        height: 240px;
+    }
+
+    .learn-more-button {
+        padding: 0.65rem 1.8rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Responsive - Tablets Medianos */
+@media (max-width: 768px) {
+    .home-header {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .header-content {
+        flex-wrap: wrap;
+        gap: 0.8rem;
+    }
+
+    .app-title {
+        font-size: 1.3rem;
+        flex: 1 1 auto;
+        min-width: 140px;
+    }
+
+    .login-button {
+        flex: 1 1 auto;
+        min-width: 140px;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .home-main {
+        gap: 2rem;
+        padding: 2rem 1.2rem;
+    }
+
+    .main-title {
+        font-size: 1.8rem;
+    }
+
+    .main-description {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+
+    .logo-container {
+        width: 200px;
+        height: 200px;
+        border-width: 2.5px;
+    }
+
+    .learn-more-button {
+        padding: 0.65rem 1.5rem;
+        font-size: 0.9rem;
+        width: auto;
+    }
+
+    .home-footer {
+        padding: 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive - Tablets Pequeños */
+@media (max-width: 640px) {
+    .home-header {
+        padding: 0.75rem 1rem;
+        border-bottom: 2px solid var(--primary-green);
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .app-title {
+        font-size: 1.25rem;
+        order: 1;
+        letter-spacing: 1.5px;
+    }
+
+    .login-button {
+        width: 100%;
+        order: 2;
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .home-main {
+        gap: 1.8rem;
+        padding: 1.8rem 1rem;
+    }
+
+    .main-title {
+        font-size: 1.6rem;
+        margin: 0 0 0.8rem 0;
+    }
+
+    .main-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin: 0 0 1.5rem 0;
+    }
+
+    .logo-container {
+        width: 170px;
+        height: 170px;
+        border-width: 2.5px;
+    }
+
+    .logo-section {
+        margin-top: 0.5rem;
+    }
+
+    .learn-more-button {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .home-footer {
+        padding: 1rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Responsive - Móviles */
+@media (max-width: 480px) {
+    .home-header {
+        padding: 0.6rem 0.8rem;
+    }
+
+    .header-content {
+        flex-direction: column;
+        gap: 0.6rem;
+    }
+
+    .app-title {
+        font-size: 1.1rem;
+        letter-spacing: 1px;
+        margin: 0;
+    }
+
+    .login-button {
+        width: 100%;
+        padding: 0.6rem 0.8rem;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+
+    .home-main {
+        gap: 1.5rem;
+        padding: 1.5rem 0.8rem;
+    }
+
+    .main-title {
+        font-size: 1.4rem;
+        margin: 0 0 0.6rem 0;
+    }
+
+    .main-description {
+        font-size: 0.9rem;
+        margin: 0 0 1.2rem 0;
+        line-height: 1.5;
+    }
+
+    .logo-container {
+        width: 150px;
+        height: 150px;
+        border-width: 2px;
+        padding: 0.8rem;
+        border-radius: 15px;
+    }
+
+    .description-section {
+        max-width: 95%;
+    }
+
+    .learn-more-button {
+        width: 100%;
+        padding: 0.55rem 0.9rem;
+        font-size: 0.85rem;
+        border-radius: 6px;
+    }
+
+    .home-footer {
+        padding: 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsive - Móviles Pequeños */
+@media (max-width: 380px) {
+    .app-title {
+        font-size: 1rem;
+        letter-spacing: 0.5px;
+    }
+
+    .login-button {
+        font-size: 0.8rem;
+        padding: 0.55rem 0.7rem;
+    }
+
+    .main-title {
+        font-size: 1.2rem;
+        margin: 0 0 0.5rem 0;
+    }
+
+    .main-description {
+        font-size: 0.85rem;
+        margin: 0 0 1rem 0;
+    }
+
+    .logo-container {
+        width: 130px;
+        height: 130px;
+        border-width: 2px;
+        padding: 0.6rem;
+    }
+
+    .learn-more-button {
+        font-size: 0.8rem;
+        padding: 0.5rem 0.8rem;
+    }
+
+    .home-main {
+        gap: 1.2rem;
+        padding: 1.2rem 0.6rem;
+    }
+}
+
+/* Responsive - Ultra pequeños */
+@media (max-width: 360px) {
+    .app-title {
+        font-size: 0.95rem;
+    }
+
+    .main-title {
+        font-size: 1.1rem;
+    }
+
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+
+    .home-main {
+        padding: 1rem 0.5rem;
+        gap: 1rem;
+    }
+
+    .learn-more-button {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.75rem;
+    }
+}

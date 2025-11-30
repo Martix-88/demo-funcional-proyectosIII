@@ -1,0 +1,702 @@
+/* Backdrop del modal */
+.task-manager-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+/* Modal principal */
+.task-manager-modal {
+    background-color: #061a38ff;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.8);
+    color: white;
+    max-height: 80vh;
+    overflow-y: auto;
+    width: 100%;
+    max-width: 450px;
+}
+
+/* Header del modal */
+.task-manager-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #304b70;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+}
+
+.task-manager-title {
+    margin: 0;
+    color: white;
+    font-size: 1.1rem;
+    flex: 1;
+}
+
+.task-manager-close {
+    padding: 0.5rem 1rem;
+    background-color: #e0e0e0;
+    color: #061a38ff;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.task-manager-close:hover {
+    background-color: #22c55e;
+    color: #000000;
+}
+
+/* Sección de progreso */
+.task-progress-section {
+    padding: 1rem 0;
+    border-bottom: 1px solid #304b70;
+    margin-bottom: 1rem;
+}
+
+.task-progress-text {
+    margin: 0 0 0.5rem 0;
+    color: #ccc;
+    font-size: 0.9em;
+}
+
+.task-progress-text span {
+    font-weight: bold;
+    color: #ffc34d;
+}
+
+.task-progress-text span.completed {
+    color: #32cd32;
+}
+
+.progress-bar-container {
+    height: 8px;
+    border-radius: 4px;
+    background-color: #304b70;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.day-completed-message {
+    color: #32cd32;
+    margin: 0.5rem 0 0 0;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+/* Lista de tareas */
+.tasks-list-container {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.no-tasks-message {
+    color: #aaa;
+    text-align: center;
+    padding: 1rem 0;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px dotted #304b70;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.task-item:hover {
+    background-color: rgba(34, 197, 94, 0.1);
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    border-radius: 4px;
+}
+
+.task-icon {
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task-text {
+    flex-grow: 1;
+    margin-left: 0.75rem;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.task-text.completed {
+    color: #aaa;
+    text-decoration: line-through;
+}
+
+/* Formulario de entrada */
+.task-input-form {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 1rem;
+    border-top: 1px solid #304b70;
+}
+
+.task-input {
+    flex-grow: 1;
+    padding: 0.75rem;
+    border-radius: 5px;
+    border: 1px solid #567dd2;
+    background-color: #0f2747ff;
+    color: white;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: #22c55e;
+    box-shadow: 0 0 8px rgba(34, 197, 94, 0.2);
+}
+
+.task-input::placeholder {
+    color: #6b7280;
+}
+
+.task-add-button {
+    background-color: #1613c1ff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.task-add-button:hover {
+    background-color: #22c55e;
+    color: #000000;
+}
+
+.task-add-button:active {
+    transform: scale(0.95);
+}
+
+/* Responsive - Desktop Grande (1920px+) */
+@media (min-width: 1921px) {
+    .task-manager-modal {
+        max-width: 500px;
+        padding: 1.8rem;
+    }
+
+    .task-manager-title {
+        font-size: 1.2rem;
+    }
+
+    .task-input {
+        padding: 0.85rem;
+        font-size: 1.05rem;
+    }
+
+    .task-add-button {
+        padding: 0.85rem 1.2rem;
+        font-size: 1rem;
+    }
+}
+
+/* Responsive - Desktop (1440px - 1920px) */
+@media (max-width: 1920px) {
+    .task-manager-modal {
+        max-width: 450px;
+        padding: 1.5rem;
+    }
+
+    .task-manager-title {
+        font-size: 1.1rem;
+    }
+
+    .task-input {
+        padding: 0.75rem;
+        font-size: 1rem;
+    }
+}
+
+/* Responsive - Tabletas Grandes (1024px - 1440px) */
+@media (max-width: 1440px) {
+    .task-manager-modal {
+        max-width: 420px;
+        padding: 1.4rem;
+    }
+
+    .task-manager-title {
+        font-size: 1.05rem;
+    }
+
+    .task-item {
+        padding: 0.65rem 0;
+    }
+}
+
+/* Responsive - Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+    .task-manager-modal {
+        max-width: 90%;
+        padding: 1.2rem;
+        max-height: 85vh;
+    }
+
+    .task-manager-title {
+        font-size: 1rem;
+    }
+
+    .task-manager-close {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .task-progress-text {
+        font-size: 0.92em;
+    }
+
+    .task-item {
+        padding: 0.6rem 0;
+    }
+
+    .task-text {
+        font-size: 0.95rem;
+    }
+
+    .task-input {
+        padding: 0.7rem;
+        font-size: 0.98rem;
+    }
+
+    .task-add-button {
+        padding: 0.7rem 0.95rem;
+        font-size: 0.92rem;
+    }
+}
+
+/* Responsive - Tablets Medianos (640px - 768px) */
+@media (max-width: 768px) {
+    .task-manager-backdrop {
+        padding: 0.75rem;
+    }
+
+    .task-manager-modal {
+        max-width: 95%;
+        padding: 1.2rem;
+        max-height: 88vh;
+        border-radius: 10px;
+    }
+
+    .task-manager-header {
+        gap: 0.6rem;
+    }
+
+    .task-manager-title {
+        font-size: 1rem;
+    }
+
+    .task-manager-close {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+        border-radius: 4px;
+    }
+
+    .task-progress-section {
+        padding: 0.9rem 0;
+        margin-bottom: 0.8rem;
+    }
+
+    .task-progress-text {
+        font-size: 0.88em;
+        margin-bottom: 0.4rem;
+    }
+
+    .progress-bar-container {
+        height: 7px;
+    }
+
+    .tasks-list-container {
+        max-height: 320px;
+        padding-right: 0.4rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .task-item {
+        padding: 0.55rem 0;
+    }
+
+    .task-text {
+        margin-left: 0.6rem;
+        font-size: 0.92rem;
+    }
+
+    .task-input-form {
+        gap: 0.5rem;
+        padding-top: 0.8rem;
+    }
+
+    .task-input {
+        padding: 0.65rem;
+        font-size: 0.95rem;
+    }
+
+    .task-add-button {
+        padding: 0.65rem 0.8rem;
+        font-size: 0.88rem;
+    }
+}
+
+/* Responsive - Móviles (480px - 640px) */
+@media (max-width: 640px) {
+    .task-manager-backdrop {
+        padding: 0.6rem;
+    }
+
+    .task-manager-modal {
+        max-width: 100%;
+        padding: 1rem;
+        max-height: 90vh;
+        border-radius: 10px;
+    }
+
+    .task-manager-header {
+        flex-direction: column;
+        gap: 0.65rem;
+        align-items: flex-start;
+        padding-bottom: 0.8rem;
+        border-bottom: 1px solid #304b70;
+    }
+
+    .task-manager-title {
+        font-size: 0.95rem;
+        width: 100%;
+    }
+
+    .task-manager-close {
+        width: 100%;
+        text-align: center;
+        padding: 0.55rem 0.8rem;
+        font-size: 0.88rem;
+        border-radius: 4px;
+    }
+
+    .task-progress-section {
+        padding: 0.8rem 0;
+        margin-bottom: 0.75rem;
+    }
+
+    .task-progress-text {
+        font-size: 0.85em;
+        margin-bottom: 0.35rem;
+    }
+
+    .progress-bar-container {
+        height: 6px;
+        margin-bottom: 0.4rem;
+    }
+
+    .day-completed-message {
+        font-size: 0.85em;
+        margin-top: 0.3rem;
+    }
+
+    .tasks-list-container {
+        max-height: 280px;
+        padding-right: 0.35rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .no-tasks-message {
+        padding: 0.8rem 0;
+        font-size: 0.85em;
+    }
+
+    .task-item {
+        padding: 0.5rem 0;
+    }
+
+    .task-icon {
+        min-width: 22px;
+    }
+
+    .task-text {
+        margin-left: 0.55rem;
+        font-size: 0.88rem;
+    }
+
+    .task-input-form {
+        gap: 0.45rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #304b70;
+    }
+
+    .task-input {
+        padding: 0.6rem;
+        font-size: 0.92rem;
+        border-radius: 4px;
+    }
+
+    .task-add-button {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.85rem;
+        border-radius: 4px;
+    }
+}
+
+/* Responsive - Móviles Pequeños (360px - 480px) */
+@media (max-width: 480px) {
+    .task-manager-backdrop {
+        padding: 0.5rem;
+    }
+
+    .task-manager-modal {
+        padding: 0.85rem;
+        border-radius: 8px;
+        max-height: 92vh;
+    }
+
+    .task-manager-header {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+        padding-bottom: 0.7rem;
+        margin-bottom: 0.7rem;
+        border-bottom: 1px solid #304b70;
+    }
+
+    .task-manager-title {
+        font-size: 0.9rem;
+        width: 100%;
+    }
+
+    .task-manager-close {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0.6rem;
+        font-size: 0.8rem;
+        border-radius: 3px;
+    }
+
+    .task-progress-section {
+        padding: 0.7rem 0;
+        margin-bottom: 0.6rem;
+        border-bottom: 1px solid #304b70;
+    }
+
+    .task-progress-text {
+        font-size: 0.8em;
+        margin-bottom: 0.3rem;
+    }
+
+    .task-progress-text span {
+        font-weight: bold;
+    }
+
+    .progress-bar-container {
+        height: 5px;
+        margin-bottom: 0.3rem;
+    }
+
+    .day-completed-message {
+        font-size: 0.8em;
+        margin-top: 0.25rem;
+    }
+
+    .tasks-list-container {
+        max-height: 240px;
+        padding-right: 0.3rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .no-tasks-message {
+        padding: 0.6rem 0;
+        font-size: 0.8em;
+    }
+
+    .task-item {
+        padding: 0.4rem 0;
+        border-bottom: 1px dotted #304b70;
+    }
+
+    .task-item:hover {
+        padding-left: 0.3rem;
+        padding-right: 0.3rem;
+        border-radius: 2px;
+    }
+
+    .task-icon {
+        min-width: 20px;
+    }
+
+    .task-text {
+        margin-left: 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .task-input-form {
+        display: flex;
+        gap: 0.35rem;
+        padding-top: 0.65rem;
+        border-top: 1px solid #304b70;
+    }
+
+    .task-input {
+        padding: 0.5rem;
+        font-size: 0.9rem;
+        border-radius: 3px;
+        border: 1px solid #567dd2;
+    }
+
+    .task-add-button {
+        padding: 0.5rem 0.6rem;
+        font-size: 0.75rem;
+        border-radius: 3px;
+    }
+}
+
+/* Responsive - Muy Pequeños (< 360px) */
+@media (max-width: 360px) {
+    .task-manager-backdrop {
+        padding: 0.4rem;
+    }
+
+    .task-manager-modal {
+        padding: 0.75rem;
+        border-radius: 6px;
+        max-height: 95vh;
+    }
+
+    .task-manager-title {
+        font-size: 0.85rem;
+    }
+
+    .task-manager-close {
+        width: 100%;
+        padding: 0.45rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .task-progress-section {
+        padding: 0.6rem 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .task-progress-text {
+        font-size: 0.75em;
+        margin-bottom: 0.25rem;
+    }
+
+    .progress-bar-container {
+        height: 4px;
+        margin-bottom: 0.2rem;
+    }
+
+    .day-completed-message {
+        font-size: 0.75em;
+    }
+
+    .tasks-list-container {
+        max-height: 200px;
+        padding-right: 0.25rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .no-tasks-message {
+        padding: 0.5rem 0;
+        font-size: 0.75em;
+    }
+
+    .task-item {
+        padding: 0.35rem 0;
+    }
+
+    .task-icon {
+        min-width: 18px;
+        font-size: 0.85em;
+    }
+
+    .task-text {
+        margin-left: 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .task-input-form {
+        gap: 0.3rem;
+        padding-top: 0.55rem;
+    }
+
+    .task-input {
+        padding: 0.45rem;
+        font-size: 0.85rem;
+    }
+
+    .task-add-button {
+        padding: 0.45rem 0.5rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Scrollbar personalizada */
+.tasks-list-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.tasks-list-container::-webkit-scrollbar-track {
+    background: #0f2747ff;
+    border-radius: 3px;
+}
+
+.tasks-list-container::-webkit-scrollbar-thumb {
+    background: #567dd2;
+    border-radius: 3px;
+}
+
+.tasks-list-container::-webkit-scrollbar-thumb:hover {
+    background: #22c55e;
+}
+
+.task-manager-modal::-webkit-scrollbar {
+    width: 6px;
+}
+
+.task-manager-modal::-webkit-scrollbar-track {
+    background: #0f2747ff;
+    border-radius: 3px;
+}
+
+.task-manager-modal::-webkit-scrollbar-thumb {
+    background: #567dd2;
+    border-radius: 3px;
+}
+
+.task-manager-modal::-webkit-scrollbar-thumb:hover {
+    background: #22c55e;
+}

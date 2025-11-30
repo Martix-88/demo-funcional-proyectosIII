@@ -1,0 +1,51 @@
+/* Common Section Styles */
+.section-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    min-height: calc(100vh - 200px);
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+.section-placeholder {
+    margin-top: 2rem;
+    padding: 2rem;
+    background-color: rgba(34, 197, 94, 0.1);
+    border: 2px dashed #22c55e;
+    border-radius: 12px;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-placeholder p {
+    font-size: 1.2rem;
+    color: #567dd2;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .section-container {
+        padding: 1.5rem;
+        min-height: calc(100vh - 180px);
+    }
+
+    .section-placeholder {
+        min-height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .section-container {
+        padding: 1rem;
+        min-height: calc(100vh - 160px);
+    }
+
+    .section-placeholder {
+        min-height: 120px;
+        padding: 1rem;
+    }
+}
