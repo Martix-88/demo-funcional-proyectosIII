@@ -1,47 +1,111 @@
-import React, { useState } from 'react';
-import MyCalendar from './components/MyCalendar';
-import LoginScreen from './components/LoginScreen';
-import RegistrationScreen from './components/RegistrationForm'; // 👈 Nuevo componente de página
+import React, { useState, useEffect } from 'react';
+import MyCalendar from './components/MyCalendar/MyCalendar';
+import RegistrationScreen from './components/RegistrationForm/RegistrationForm';
+import Home from './components/Home/Home';
+import LoginModal from './components/LoginModal/LoginModal';
+import LoginFormModal from './components/LoginFormModal/LoginFormModal';
+import { useLocalStorage } from './hooks/useLocalStorage';
 import './App.css';
 
 function App() {
-    // El estado ahora puede ser 'login', 'register' o 'calendar'
-    const [view, setView] = useState('login');
+    // Estado de sesión del usuario desde localStorage
+    const [isLoggedIn, setIsLoggedIn] = useLocalStorage('isLoggedIn', false);
+    const [currentUser, setCurrentUser] = useLocalStorage('currentUser', null);
+    const [userCredentials, setUserCredentials] = useLocalStorage('userCredentials', { email: '', password: '' });
+    
+    // Estado local para la vista
+    const [view, setView] = useState(isLoggedIn ? 'calendar' : 'home');
+    const [showLoginModal, setShowLoginModal] = useState(false);
 
-    const handleLoginSuccess = () => {
-        setView('calendar'); // Ir al calendario
+    // Auto-login si hay sesión activa
+    useEffect(() => {
+        if (isLoggedIn && currentUser) {
+            setView('calendar');
+        } else {
+            setView('home');
+        }
+    }, [isLoggedIn, currentUser]);
+
+    const handleLoginSuccess = (email, password) => {
+        // Guardar credenciales en localStorage
+        setUserCredentials({ email, password });
+        // Guardar en localStorage
+        setIsLoggedIn(true);
+        setCurrentUser({ email });
+        
+        // Cambiar vista
+        setView('calendar');
+        setShowLoginModal(false);
     };
 
-    const handleNavigate = (targetView) => {
-        setView(targetView); // Cambiar entre 'login' y 'register'
+    const handleLogout = () => {
+        // Limpiar localStorage
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+        
+        // Cambiar vista
+        setView('home');
+    };
+
+    const handleNavigateRegister = () => {
+        setView('register');
+        setShowLoginModal(false);
+    };
+
+    const handleLearnMore = () => {
+        alert('Aquí irían más detalles sobre la aplicación. ¡Próximamente!');
     };
 
     const renderView = () => {
         switch (view) {
-            case 'login':
+            case 'home':
                 return (
-                    <LoginScreen
-                        onLoginSuccess={handleLoginSuccess}
-                        // La navegación se pasa directamente
-                        onNavigateRegister={() => handleNavigate('register')}
-                    />
+                    <>
+                        <Home
+                            onLoginClick={() => setShowLoginModal(true)}
+                            onLearnMore={handleLearnMore}
+                        />
+                        <LoginModal
+                            isOpen={showLoginModal}
+                            onClose={() => setShowLoginModal(false)}
+                        >
+                            <LoginFormModal
+                                onLoginSuccess={handleLoginSuccess}
+                                onNavigateRegister={handleNavigateRegister}
+                                savedEmail={userCredentials.email}
+                                savedPassword={userCredentials.password}
+                            />
+                        </LoginModal>
+                    </>
                 );
             case 'register':
                 return (
-                    // Pasar la función para volver al login
                     <RegistrationScreen
-                        onRegistrationSuccess={() => handleNavigate('login')}
-                        onNavigateLogin={() => handleNavigate('login')}
+                        onRegistrationSuccess={() => setView('home')}
+                        onNavigateLogin={() => setView('home')}
                     />
                 );
             case 'calendar':
-                return <MyCalendar />;
+                return <MyCalendar onLogout={handleLogout} onLogoClick={() => setView('home')} />;
             default:
                 return (
-                    <LoginScreen
-                        onLoginSuccess={handleLoginSuccess}
-                        onNavigateRegister={() => handleNavigate('register')}
-                    />
+                    <>
+                        <Home
+                            onLoginClick={() => setShowLoginModal(true)}
+                            onLearnMore={handleLearnMore}
+                        />
+                        <LoginModal
+                            isOpen={showLoginModal}
+                            onClose={() => setShowLoginModal(false)}
+                        >
+                            <LoginFormModal
+                                onLoginSuccess={handleLoginSuccess}
+                                onNavigateRegister={handleNavigateRegister}
+                                savedEmail={userCredentials.email}
+                                savedPassword={userCredentials.password}
+                            />
+                        </LoginModal>
+                    </>
                 );
         }
     };

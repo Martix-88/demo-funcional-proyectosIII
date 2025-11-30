@@ -1,0 +1,211 @@
+/* Contenedor del bloc de notas */
+.notepad-container {
+    margin-top: 1rem;
+    background: rgba(6, 26, 56, 0.06);
+    padding: 0.6rem;
+    border-radius: 10px;
+    border: 1px solid rgba(34, 197, 94, 0.08);
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.notepad-title {
+    margin: 0 0 0.6rem 0;
+    font-size: 1.0rem;
+    color: #22c55e;
+    font-weight: bold;
+}
+
+/* Toolbar */
+.notepad-toolbar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.toolbar-button {
+    padding: 0.5rem 0.8rem;
+    background: linear-gradient(135deg, #17164b, #1f2937);
+    color: #fff;
+    border: 1px solid rgba(34, 197, 94, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.toolbar-button:hover {
+    background: linear-gradient(135deg, #22c55e, #16a34a);
+    border-color: #22c55e;
+    transform: translateY(-2px);
+}
+
+.toolbar-button:active {
+    transform: translateY(0);
+}
+
+.bold-button {
+    font-size: 1rem;
+    min-width: 2.5rem;
+}
+
+.color-picker-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.color-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-width: 2.5rem;
+}
+
+.color-dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: inline-block;
+}
+
+.color-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    cursor: pointer;
+}
+
+.clear-button {
+    min-width: 2.5rem;
+}
+
+/* Área de edición contenteditable */
+.notepad-editor {
+    min-height: 120px;
+    max-height: 260px;
+    overflow-y: auto;
+    padding: 0.9rem;
+    background-color: #ffffff;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    border-radius: 8px;
+    color: #111827;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    word-wrap: break-word;
+    outline: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    text-align: left;
+    direction: ltr;
+}
+
+.notepad-editor:focus {
+    border-color: rgba(34, 197, 94, 0.3);
+    background-color: #ffffff;
+}
+
+.notepad-editor:empty:before {
+    content: attr(data-placeholder);
+    color: #9ca3af;
+}
+
+/* Scroll suave en el editor */
+.notepad-editor {
+    scroll-behavior: smooth;
+}
+
+/* Responsive - Tablet (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .notepad-container {
+        padding: 0.8rem;
+    }
+
+    .notepad-title {
+        font-size: 1rem;
+    }
+
+    .notepad-toolbar {
+        gap: 0.4rem;
+    }
+
+    .toolbar-button {
+        padding: 0.4rem 0.7rem;
+        font-size: 0.85rem;
+    }
+
+    .notepad-editor {
+        min-height: 120px;
+        max-height: 250px;
+        padding: 0.8rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* Responsive - Mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .notepad-container {
+        padding: 0.7rem;
+        margin-top: 0.8rem;
+    }
+
+    .notepad-title {
+        font-size: 0.95rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .notepad-toolbar {
+        gap: 0.3rem;
+    }
+
+    .toolbar-button {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .notepad-editor {
+        min-height: 100px;
+        max-height: 200px;
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Responsive - Mobile pequeño (max-width: 480px) */
+@media (max-width: 480px) {
+    .notepad-container {
+        padding: 0.6rem;
+        margin-top: 0.6rem;
+    }
+
+    .notepad-title {
+        font-size: 0.9rem;
+        margin-bottom: 0.6rem;
+    }
+
+    .notepad-toolbar {
+        gap: 0.25rem;
+    }
+
+    .toolbar-button {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
+        min-width: 2rem;
+    }
+
+    .color-dot {
+        width: 14px;
+        height: 14px;
+    }
+
+    .notepad-editor {
+        min-height: 80px;
+        max-height: 150px;
+        padding: 0.6rem;
+        font-size: 0.8rem;
+    }
+}

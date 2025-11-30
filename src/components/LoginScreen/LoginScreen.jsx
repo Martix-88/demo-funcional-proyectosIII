@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import logo_web from '../assets/logo_web.png';
+import logo_web from '../../assets/logo_web.png';
 
-// Componente simple de spinner de carga (necesita la animación 'spin' en index.css)
 const LoadingSpinner = () => (
     <div
         style={{
@@ -20,25 +19,20 @@ const LoadingSpinner = () => (
 const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [error, setError] = useState(''); // Estado para mostrar errores
-    const [loading, setLoading] = useState(false); // Estado para simular la carga
+    const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setError(''); // Limpiar errores anteriores
+        setError('');
 
         if (username && password) {
-            setLoading(true); // Iniciar la carga
+            setLoading(true);
 
-            // SIMULACIÓN DE INICIO DE SESIÓN SIN BACKEND
             console.log(`Simulando inicio de sesión con: ${username}`);
 
-            // Pausa de 2 segundos para simular la llamada a la API/carga
             setTimeout(() => {
-                setLoading(false); // Detener la carga
-
-                // En un entorno real, verificaríamos credenciales aquí.
-                // Simulamos un inicio de sesión exitoso incondicionalmente.
+                setLoading(false);
                 onLoginSuccess();
             }, 2000);
         } else {
@@ -46,7 +40,6 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
         }
     };
 
-    // Estilos de input unificados
     const inputStyle = {
         padding: '10px',
         borderRadius: '5px',
@@ -56,7 +49,6 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
         marginTop: '5px',
     };
 
-    // Estilos para la etiqueta (label)
     const labelStyle = {
         display: 'flex',
         flexDirection: 'column',
@@ -81,7 +73,6 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
                     'linear-gradient(135deg, #2530a3ff 40%, #10154bff 60%)',
             }}
         >
-            {/* LOGO ARRIBA A LA IZQUIERDA */}
             <div style={{ position: 'absolute', top: '20px', left: '20px' }}>
                 <img
                     src={logo_web}
@@ -90,7 +81,6 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
                         height: '70px',
                         width: 'auto',
                     }}
-                    // Fallback en caso de que la URL no cargue
                     onError={(e) => {
                         e.target.onerror = null;
                         e.target.src =
@@ -111,14 +101,13 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
                     display: 'flex',
                     flexDirection: 'column',
                     gap: '15px',
-                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)', // Sombra para el formulario
+                    boxShadow: '0 4px 15px rgba(0, 0, 0, 0.5)',
                 }}
             >
-                {/* 1. Campo Usuario (Correo) */}
                 <label style={labelStyle}>
                     Correo Electrónico:
                     <input
-                        type="email" // Cambiado a email para mejor UX
+                        type="email"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
                         required
@@ -127,7 +116,6 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
                     />
                 </label>
 
-                {/* 2. Campo Contraseña */}
                 <label style={labelStyle}>
                     Contraseña:
                     <input
@@ -140,7 +128,6 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
                     />
                 </label>
 
-                {/* Mensaje de error o carga */}
                 {error && (
                     <p
                         style={{
@@ -172,10 +159,10 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
 
                 <button
                     type="submit"
-                    disabled={loading} // Deshabilita el botón mientras carga
+                    disabled={loading}
                     style={{
                         marginTop: '10px',
-                        backgroundColor: loading ? '#0e0b74' : '#1613c1ff', // Cambia color si carga
+                        backgroundColor: loading ? '#0e0b74' : '#1613c1ff',
                         color: 'white',
                         border: 'none',
                         padding: '12px',
@@ -183,9 +170,8 @@ const LoginScreen = ({ onLoginSuccess, onNavigateRegister }) => {
                         fontWeight: 'bold',
                         cursor: loading ? 'default' : 'pointer',
                         transition: 'background-color 0.3s, box-shadow 0.3s',
-                        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)', // Sombra para el botón
-
-                        display: 'flex', // Necesario para centrar el spinner/texto
+                        boxShadow: '0 4px 10px rgba(0, 0, 0, 0.3)',
+                        display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
                     }}

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import logo_web from '../assets/logo_web.png'; // Asegúrate de que esta ruta sea correcta
+import logo_web from '../../assets/logo_web.png';
 
 const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
-    // Estados para capturar los datos del formulario
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
@@ -15,7 +14,6 @@ const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
             alert(
                 `¡Registro Exitoso!\nUsuario: ${name}\nAhora puedes iniciar sesión.`
             );
-            // Vuelve a la pantalla de login
             onRegistrationSuccess();
         } else {
             alert('Por favor, completa todos los campos.');
@@ -39,7 +37,6 @@ const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
                     'linear-gradient(135deg, #2530a3ff 40%, #10154bff 60%)',
             }}
         >
-            {/* LOGO ARRIBA A LA IZQUIERDA */}
             <div style={{ position: 'absolute', top: '20px', left: '20px' }}>
                 <img
                     src={logo_web}
@@ -62,8 +59,6 @@ const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
                     gap: '50px',
                 }}
             >
-                {/* Campo Nombre */}
-
                 <input
                     type="text"
                     placeholder="Nombre Completo"
@@ -78,7 +73,6 @@ const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
                         backgroundColor: '#0f2747ff',
                     }}
                 />
-                {/* Campo Correo */}
                 <input
                     type="email"
                     placeholder="Correo Electrónico"
@@ -93,7 +87,6 @@ const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
                         backgroundColor: '#0f2747ff',
                     }}
                 />
-                {/* Campo Contraseña */}
                 <input
                     type="password"
                     placeholder="Contraseña"
@@ -121,7 +114,6 @@ const RegistrationScreen = ({ onRegistrationSuccess, onNavigateLogin }) => {
                 >
                     Registrar Cuenta
                 </button>
-                {/* Enlace para volver a Iniciar Sesión */}
                 <p
                     onClick={onNavigateLogin}
                     style={{
